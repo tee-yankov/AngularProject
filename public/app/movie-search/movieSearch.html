@@ -1,12 +1,18 @@
 <div class="container">
-  <form ng-submit="submitHandler(query)">
-    <input type="text" ng-model="query">
-    <input type="submit" value="Search">
+  <form ng-submit="submitHandler(query)" class="form-inline">
+    <div class="row">
+      <div class="col-xs-10">
+        <input type="text" class="form-control" ng-model="query">
+      </div>
+      <div class="col-xs-2">
+        <input class="btn btn-primary" type="submit" value="Search">
+      </div>
+    </div>
   </form>
   <br>
   <div class="row" ng-if="results.length">
     <div class="col-sm-4" ng-repeat="result in results">
-      <img class="img-responsive grid-image" ng-src="{{result.Poster === 'N/A' ? 'https://lorempixel.com/200x400' : result.Poster}}" />
+      <img class="img-responsive grid-image" ng-src="{{result.Poster === 'N/A' ? 'http://lorempixel.com/200/300/' : result.Poster}}" />
       <h4>{{result.Title}}</h4>
       <h5>{{result.Year}}</h5>
     </div>
