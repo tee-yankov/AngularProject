@@ -1,15 +1,13 @@
 angular.module('myApp', []);
 
 angular.module('myApp')
-.controller('homeController', function($scope) {
-
-})
+.controller('homeController', function() {})
 .directive('movieSearch', function($http) {
   var directive = {
     restrict: 'E',
     link: link,
     templateUrl: 'app/movie-search/movieSearch.html'
-  };
+  }
 
   return directive;
 
@@ -35,7 +33,7 @@ angular.module('myApp')
 
   return directive;
 
-  function link(scope, element, attrs) {
+  function link(scope) {
     scope.submitHandler = function() {
       console.log(scope.user);
     }

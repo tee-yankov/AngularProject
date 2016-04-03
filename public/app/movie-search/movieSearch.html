@@ -1,11 +1,15 @@
-<div>
+<div class="container">
   <form ng-submit="submitHandler(query)">
     <input type="text" ng-model="query">
     <input type="submit" value="Search">
   </form>
-  <div ng-repeat="result in results">
-    <img ng-src="{{result.Poster}}" />
-    <h4>{{result.Title}}</h4>
-    <h5>{{result.Year}}</h5>
+  <br>
+  <div class="row" ng-if="results.length">
+    <div class="col-sm-4" ng-repeat="result in results">
+      <img class="img-responsive grid-image" ng-src="{{result.Poster === 'N/A' ? 'https://lorempixel.com/200x400' : result.Poster}}" />
+      <h4>{{result.Title}}</h4>
+      <h5>{{result.Year}}</h5>
+    </div>
   </div>
+  <h2 ng-if="!results.length">No results found :(</h2>
 </div>
