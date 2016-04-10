@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="well" ng-repeat="product in products">
+<div class="container" ng-controller="cartController">
+  <div class="well" ng-repeat="product in products()">
     <div class="media-left">
       <img ng-src="{{ product.image }}" />
     </div>

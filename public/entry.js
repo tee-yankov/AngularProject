@@ -8,3 +8,5 @@ require('./app/login-form/loginForm.js');
 require('./app/home/home.js');
 require('./app/store-front/storeFront.js');
 require('./app/nav-bar/navBar.js');
+require('./app/products/products.js');
+require('./app/cart/cart.js');
