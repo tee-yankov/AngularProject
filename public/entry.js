@@ -1,6 +1,7 @@
 require('angular');
 require('angular-ui-bootstrap');
 require('angular-animate');
+require('angular-ui-router');
 require('./app/app.js');
 require('./app/movie-search/movieSearch.js');
 require('./app/login-form/loginForm.js');
