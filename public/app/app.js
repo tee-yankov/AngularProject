@@ -18,4 +18,8 @@ angular.module('myApp', [
       url: '/about',
       templateUrl: 'app/about/about.html'
     })
+    .state('cart', {
+      url: '/cart',
+      templateUrl: 'app/cart/cart.html'
+    })
 });
