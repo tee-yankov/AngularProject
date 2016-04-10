@@ -16,10 +16,8 @@ function productsFactory() {
   return factory;
 
   function activate() {
-    var localProducts = JSON.parse(window.localStorage.cart);
-    if (localProducts && localProducts.length) {
-      cart = localProducts
-    }
+    var localProducts = JSON.parse(window.localStorage.cart ? window.localStorage.cart : '[]');
+    cart = localProducts
   }
 
   function addProduct(product) {
