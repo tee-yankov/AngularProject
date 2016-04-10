@@ -1,5 +1,12 @@
 <div ng-controller="homeController">
-  <ng-include src="'app/store-front/storeFront.html'"></ng-include>
+  <div ng-switch="currentRoute">
+    <div ng-switch-when="#/about">
+      <ng-include src="'app/about/about.html'"></ng-include>
+    </div>
+    <div ng-switch-when="#/home">
+      <ng-include src="'app/store-front/storeFront.html'"></ng-include>
+    </div>
+  </div>
   <!-- <movie-search></movie-search> -->
   <!-- <login-form></login-form> -->
 </div>
