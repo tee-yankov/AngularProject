@@ -1,10 +1,11 @@
 angular.module('myApp')
 .factory('productsFactory', productsFactory);
 
-function productsFactory() {
+function productsFactory($http) {
   var factory = {
     addProduct: addProduct,
     getProducts: getProducts,
+    getProductById: getProductById,
     addToCart: addToCart,
     getProductsFromCart: getProductsFromCart
   };
@@ -16,6 +17,12 @@ function productsFactory() {
   return factory;
 
   function activate() {
+    if (!getProducts().length) {
+      $http.get('http://beta.json-generator.com/api/json/get/41IRga-kW')
+      .then(function(response) {
+        products = response.data;
+      });
+    }
     var localProducts = JSON.parse(window.localStorage.cart ? window.localStorage.cart : '[]');
     cart = localProducts
   }
@@ -31,6 +38,16 @@ function productsFactory() {
   function addToCart(product) {
     cart.push(product);
     cacheProducts();
+  }
+
+  function getProductById(productId) {
+    var product = {};
+    products.forEach(function(_product) {
+      if (_product._id === productId) {
+        product = _product;
+      }
+    });
+    return product;
   }
 
   function cacheProducts() {

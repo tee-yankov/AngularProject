@@ -10,3 +10,4 @@ require('./app/store-front/storeFront.js');
 require('./app/nav-bar/navBar.js');
 require('./app/products/products.js');
 require('./app/cart/cart.js');
+require('./app/product/product.js');

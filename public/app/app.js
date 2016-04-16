@@ -4,15 +4,16 @@ angular.module('myApp', [
   'ui.router'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise("/home/store");
+  $urlRouterProvider.otherwise('/store');
   $stateProvider
-    .state('home', {
-      url: '/home',
-      templateUrl: 'app/home/home.html'
-    })
-    .state('home.store', {
+    .state('store', {
       url: '/store',
       templateUrl: 'app/store-front/storeFront.html'
+    })
+    .state('product', {
+      url: '/product/:productId',
+      templateUrl: 'app/product/product.html',
+      controller: 'storeController'
     })
     .state('about', {
       url: '/about',
