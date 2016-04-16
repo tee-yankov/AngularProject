@@ -7,7 +7,8 @@ function productsFactory($http) {
     getProducts: getProducts,
     getProductById: getProductById,
     addToCart: addToCart,
-    getProductsFromCart: getProductsFromCart
+    getProductsFromCart: getProductsFromCart,
+    clearCart: clearCart
   };
 
   var products = [];
@@ -36,7 +37,13 @@ function productsFactory($http) {
   }
 
   function addToCart(product) {
-    cart.push(product);
+    var productIndex = cart.indexOf(product)
+    if (productIndex === -1) {
+      product.quantity = 1;
+      cart.push(product);
+    } else {
+      cart[productIndex].quantity++;
+    }
     cacheProducts();
   }
 
@@ -56,5 +63,10 @@ function productsFactory($http) {
 
   function getProductsFromCart() {
     return cart;
+  }
+
+  function clearCart() {
+    cart = [];
+    window.localStorage.removeItem('cart');
   }
 }

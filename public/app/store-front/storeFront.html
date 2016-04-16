@@ -1,6 +1,10 @@
 <div class="container" ng-controller="storeFrontController">
   <div class="row">
-    <div class="col-xs-3" ng-repeat="product in products() track by product._id">
+    <input type="text" class="form-control" ng-model="query.name">
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-3" ng-repeat="product in products() | filter : query track by product._id">
       <div class="thumbnail products__container">
         <img ng-src="{{ product.image }}" />
         <div class="caption">
@@ -12,8 +16,8 @@
           <p>
             {{ product.description }}
           </p>
-          <a href="#" class="btn btn-primary" ng-click="addToCart(product)">Add to cart</a>
-          <a href="#" class="btn"> {{ product.price }}</a>
+          <a class="btn btn-primary" ng-click="addToCart(product)">Add to cart</a>
+          <a class="btn"> {{ product.price }}</a>
         </div>
       </div>
     </div>

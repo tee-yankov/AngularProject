@@ -1,9 +1,10 @@
 <div class="container" ng-controller="cartController">
-  <div class="well" ng-repeat="product in products()">
+  <button type="button" class="btn btn-primary" ng-click="clearCart()">Clear Cart</button>
+  <div class="well" ng-repeat="product in products() track by product._id">
     <div class="media-left">
       <img ng-src="{{ product.image }}" />
     </div>
-    <h1>{{ product.name }}</h1>
+    <h1>{{ product.name }} - {{ product.quantity }}</h1>
     <h5>{{ product.description }}</h5>
   </div>
 </div>
