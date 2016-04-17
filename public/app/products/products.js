@@ -8,7 +8,9 @@ function productsFactory($http) {
     getProductById: getProductById,
     addToCart: addToCart,
     getProductsFromCart: getProductsFromCart,
-    clearCart: clearCart
+    removeFromCart: removeFromCart,
+    clearCart: clearCart,
+    getCartTotal: getCartTotal
   };
 
   var products = [];
@@ -19,7 +21,7 @@ function productsFactory($http) {
 
   function activate() {
     if (!getProducts().length) {
-      $http.get('http://beta.json-generator.com/api/json/get/41IRga-kW')
+      $http.get('http://www.json-generator.com/api/json/get/cgdxmppCZK?indent=2')
       .then(function(response) {
         products = response.data;
       });
@@ -72,5 +74,28 @@ function productsFactory($http) {
   function clearCart() {
     cart = [];
     window.localStorage.removeItem('cart');
+  }
+
+  function removeFromCart(productId) {
+    var productIndex;
+    cart.forEach(function(_product, index) {
+      if (_product._id === productId) {
+        productIndex = index;
+      }
+    });
+    if (cart[productIndex].quantity > 1) {
+      cart[productIndex].quantity--;
+    } else {
+      cart.splice(productIndex, 1);
+    }
+  }
+
+  function getCartTotal() {
+    var total = 0;
+    cart.forEach(function(product) {
+      var price = product.price.replace(/\$|,/g, '');
+      total += parseFloat(price) * product.quantity;
+    });
+    return total;
   }
 }

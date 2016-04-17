@@ -1,5 +1,5 @@
 angular.module('myApp')
-.directive('navBar', function() {
+.directive('navBar', function(productsFactory) {
   var restrict = 'E';
   var templateUrl = 'app/nav-bar/navBar.html'
   var directive = {
@@ -12,5 +12,6 @@ angular.module('myApp')
 
   function link(scope, element, attrs) {
     scope.brandName = attrs.brand;
+    scope.getCartTotal = productsFactory.getCartTotal;
   }
 });
