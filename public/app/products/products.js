@@ -37,7 +37,10 @@ function productsFactory($http) {
   }
 
   function addToCart(product) {
-    var productIndex = cart.indexOf(product)
+    var indices = cart.map(function(_product) {
+      return _product._id;
+    });
+    var productIndex = indices.indexOf(product._id)
     if (productIndex === -1) {
       product.quantity = 1;
       cart.push(product);
@@ -62,6 +65,7 @@ function productsFactory($http) {
   }
 
   function getProductsFromCart() {
+    console.log(cart);
     return cart;
   }
 

@@ -1,4 +1,17 @@
 <div class="container">
-  <h2>Single Product Page</h2>
-  {{ product(productId) }}
+  <div class="row">
+    <img src="img-responsive" ng-src="{{ product(productId).image }}" alt="" />
+  </div>
+  <div class="row">
+    <h3>{{ product(productId).name }}</h3>
+  </div>
+  <div class="row">
+    <p>
+      {{ product(productId).description }}
+    </p>
+  </div>
+  <div class="row">
+    <button class="btn btn-primary" ng-click="addToCart(product(productId))" type="button" name="button">Add to Cart</button>
+    <span>{{ product(productId).price }}</span>
+  </div>
 </div>
